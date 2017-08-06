@@ -10,48 +10,51 @@
 */
 let cardValues = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" ]
 
-let cardTotal = 0
+
 
 function handValue (hand) {
+// need to make hand array in numbers from an array
+  for (var i = 0; i < hand.length; i++) {
+    let handTotal = 0;
+      if(hand[i] == "J" || hand[i] == "Q" || hand[i] == "K" || hand[i] == "A"){
+        handTotal = Number(hand[i]);
+        handTotal += hand[i];
+        console.log(handTotal + " first part of if statement");
+      }else if(hand[i] === "J" || hand[i] === "Q" || hand[i] === "K"){
+        hand[i] = 10; handTotal += hand[i];
+        console.log(hand[i] + " second part of if statement");
+      }else return;
+      console.log(hand[i] + " out side of if statement");
+  }
 
-  // function changeStringToInteger(cardValues){
-    for (var i = 0; i < hand.length; i++){
-        cardValues[i] = parseInt(cardValues[i], 10);
-        if (hand[i].includes("J") || hand[i].includes("J") || hand[i].includes("J"))
-    }
-
-console.log(hand);
-return cardValues;
-  // }
-
-  // function cardValueSearch (cardValues, hand){
-  //
-  //     let searchArray = cardValues.slice(0);
-  //
-  //     while(searchArray > 0){
-  //         console.log(searchArray);
-  //         let cardMid = math.floor(searchArray.length / 2);
-  //         let cardMidValue = searchArray[cardMid];
-  //
-  //         if(cardMid === hand[i]){
-  //             return hand[i];
-  //         } else if(cardMid < hand[i]){
-  //           searchArray.splice(0, cardMid + 1);
-  //         } else {
-  //           searchArray.splice(mid, searchArray.length - cardMid);
-  //         }
-  //       return false;
-  //     }
-  //
-  // }
-  // return;
-
+  console.log(hand + " out side of loop");
+// console.log(hand);
 }
+handvalue(cardValues);
+
+// handValue(cardValues);
+// console.log(hand);
+
+
+
+//   var totalValue = 0
+//   var currentHand = []
+//   for (var i = 0; i < hand.length; i++) {
+//     let userInput = hand[i]
+//   }
+//   // console.log(hand[i]);
+//   // console.log(totalValue);
+//   // console.log(hand);
+//   return;
+// }
+
 
 /* -----  Hints ------
+- takes array of cards and returns the total value
+
 
 1..10   ==> Worth face value (1 = 1, 4 = 4, etc)
 K, Q, J ==> Worth 10
-A       ==> Worth 1 or 11
+A       ==> Worth 1 if totalValue > 10 || 11 if totalValue <= 10
 
 */
