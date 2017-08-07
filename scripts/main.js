@@ -8,29 +8,68 @@
    you'll need to parse through that first before you can start to
    write your logic.
 */
-let cardValues = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" ]
-
-
 
 function handValue (hand) {
+  let handTotal = 0;
+  let newArr = [];
+  let output = 0;
 // need to make hand array in numbers from an array
   for (var i = 0; i < hand.length; i++) {
-    let handTotal = 0;
-      if(hand[i] == "J" || hand[i] == "Q" || hand[i] == "K" || hand[i] == "A"){
-        handTotal = Number(hand[i]);
-        handTotal += hand[i];
-        console.log(handTotal + " first part of if statement");
-      }else if(hand[i] === "J" || hand[i] === "Q" || hand[i] === "K"){
-        hand[i] = 10; handTotal += hand[i];
-        console.log(hand[i] + " second part of if statement");
-      }else return;
-      console.log(hand[i] + " out side of if statement");
+ // evaluate array to see if "A" is included and if total is greater than 11
+    if (hand[i] === "A"){
+      newArr.push(hand[i])
+    }else if (hand[i] === "J" || hand[i] === "K" || hand[i] === "Q" ) {
+      hand [i]= 10;
+      handTotal += hand [i];
+    }else{
+      handTotal += (parseInt(hand[i], 10));
+    }
+
   }
 
-  console.log(hand + " out side of loop");
-// console.log(hand);
+  let aceTotal = 0;
+    for (var n = 0; n < newArr.length; n++) {
+      if (handTotal >= 11){
+          newArr[n] = 1;
+          aceTotal += newArr[n];
+          // newArr[n] += aceTotal;
+      }else {
+        newArr[n] = 11;
+        aceTotal += newArr[n];
+        // newArr[n] += aceTotal;
+      }
+
+    }
+
+
+output = (aceTotal + handTotal);
+console.log(output);
+return output;
 }
-handvalue(cardValues);
+
+    //if the hand has a value of "1"- "10" assign face value
+
+    // if the hand is a assign later
+
+// // console.log(hand);
+// handValue(cardValues);
+//
+//
+//
+// //get ace out of hand array first
+// //no parseInt for the letters only equal to 10
+// if(hand[i] == "J" || hand[i] == "Q" || hand[i] == "K" || hand[i] == "A"){
+//   handTotal = parseInt(hand[i]);
+//   handTotal += hand[i];
+//   console.log(handTotal + " first part of if statement");
+// }else if(hand[i] === "J" || hand[i] === "Q" || hand[i] === "K"){
+//   hand[i] = 10; handTotal += hand[i];
+//   console.log(hand[i] + " second part of if statement");
+// }else {return false};
+// console.log(hand[i] + " out side of if statement");
+//
+//
+
 
 // handValue(cardValues);
 // console.log(hand);
